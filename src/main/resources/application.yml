@@ -1,0 +1,25 @@
+server:
+  port: 8085
+
+spring:
+  config:
+    import: vault://
+  application:
+    name: spring-cloud-vault-demo
+  profiles:
+    active: local
+  cloud:
+    vault:
+      authentication: TOKEN
+      token: #token
+      scheme: http
+      host: localhost
+      port: 8200
+      fail-fast: true
+      kv:
+        enabled: true
+        backend: secret
+        default-context: spring-cloud-vault-demo
+      database:
+        enabled: true
+        role: dynamic-role
